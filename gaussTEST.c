@@ -27,15 +27,15 @@ int eliminate(Matrix *mat, Matrix *b){
         if( r > mat->c )
             k = mat->c;
         /*zerowanie pierwszego elementu w wierszu*/
+        b->data[r][0] = b->data[r][0] - ( (b->data[0][0]) * ( mat->data[r][0] / mat->data[0][0] ) );
         for( c = 0; c < (mat->c); c++ ) {
             mat->data[r][c] = mat->data[r][c] - ( mat->data[0][c] * ( mat->data[r][0] / mat->data[0][0] ) );
         }
-        b->data[r][0] = b->data[r][0] - ( (b->data[0][0]) * ( mat->data[r][0] / mat->data[0][0] ) );
         while( n != k ) {  /* bo n maksymalnie moze byc rowne (c-1) zeby nie mazalo po pamieci */
+            b->data[r][0] = b->data[r][0] - ( b->data[n][0] * ( mat->data[r][n] / mat->data[n][n] ) );
             for( c = 0; c < (mat->c); c++ )  {
             mat->data[r][c] = mat->data[r][c] - ( mat->data[n][c] * ( mat->data[r][n] / mat->data[n][n] ) );
             }
-            b->data[r][0] = b->data[r][0] - ( b->data[n][0] * ( mat->data[r][n] / mat->data[n][n] ) );
             n++;
         }
     }
