@@ -5,10 +5,19 @@
  * Zwraca 1 - macierz osobliwa - dzielenie przez 0
  */
 int eliminate(Matrix *mat, Matrix *b){
-    /**
-  	 * Tutaj należy umieścić właściwą implemntację.
-		 */
+    int i;
+    int j;
+    int n;
 
-		return 0;
+    for( i = 0; i < (mat->r - 1); i++ ) {
+        for( j = i+1; j < mat->r;  j++ ) {
+            double temp = mat->data[j][i] / mat->data[i][i];
+            b->data[j][0] = b->data[j][0] - temp*(b->data[i][0]);
+            for( n = 0; n < mat->c; n++ )
+                mat->data[j][n] = mat->data[j][n] - temp*(mat->data[i][n]);
+            
+        }
+    }
+    return 0;
 }
 
