@@ -34,8 +34,8 @@ int  backsubst(Matrix *x, Matrix *mat, Matrix *b) {
 
         x->data[i][0] = b->data[i][0] / mat->data[i][i];
         /* dzielenie aby otrzymac x */
-        return 0;
     }
+    return 0;
 }
 
 
