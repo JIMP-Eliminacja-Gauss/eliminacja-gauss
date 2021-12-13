@@ -26,13 +26,13 @@ int  backsubst(Matrix *x, Matrix *mat, Matrix *b) {
         x->data[i][0] = b->data[i][0];
         /* przypisanie wartosci z macierzy b */
 
-        for(j = i+1; j < b->c; j++)
-            x->data[i][0] = b->data[i][0] - mat->data[i][j];
+        for(j = i+1; j < mat->c; j++)
+            x->data[i][0] = x->data[i][0] - mat->data[i][j] * x->data[j][0];
 
         if (mat->data[i][i] == 0)
             return 1;
 
-        x->data[i][0] = b->data[i][0] / mat->data[i][i];
+        x->data[i][0] = x->data[i][0] / mat->data[i][i];
         /* dzielenie aby otrzymac x */
     }
     return 0;

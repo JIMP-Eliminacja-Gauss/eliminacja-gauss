@@ -20,12 +20,17 @@ int main(int argc, char ** argv) {
 	x = createMatrix(b->r, 1);
 	if (x != NULL) {
 		res = backsubst(x,A,b);
+    for (int i = 0; i < x->r; i++) {
+        fprintf(stdout, "x[%d] = %lf\n", i+1, x->data[i][0]);
+    }
 
 		printToScreen(x);
 	  freeMatrix(x);
 	} else {
 					fprintf(stderr,"Błąd! Nie mogłem utworzyć wektora wynikowego x.\n");
 	}
+
+
 
 	freeMatrix(A);
 	freeMatrix(b);
