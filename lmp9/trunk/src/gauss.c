@@ -10,6 +10,8 @@ int eliminate(Matrix *mat, Matrix *b){
     int n;
 
     for( i = 0; i < (mat->r - 1); i++ ) {
+        if( mat->data[i][i] == 0 )
+            return 1;
         for( j = i+1; j < mat->r;  j++ ) {
             double temp = mat->data[j][i] / mat->data[i][i];
             b->data[j][0] = b->data[j][0] - temp*(b->data[i][0]);
