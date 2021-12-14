@@ -1,9 +1,26 @@
 #include "gauss.h"
+#include <math.h>
+#include <stdio.h>
 
 /**
  * Zwraca 0 - elimnacja zakonczona sukcesem
  * Zwraca 1 - macierz osobliwa - dzielenie przez 0
  */
+int diag_elem_choice(Matrix *mat, Matrix *b, int j) {
+    // int j is the current row
+    int max = mat->data[j][j];
+    int row = j;
+    for (int i = j+1; i < mat->r; i++) {
+        if (fabs(max) < (mat->data[i][j])) {
+            row = i;
+            max = mat->data[i][j];
+        }
+    }
+
+    return row;
+} 
+
+
 int eliminate(Matrix *mat, Matrix *b){
     int i;
     int j;
