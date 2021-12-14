@@ -19,7 +19,6 @@ int diag_elem_choice( Matrix *mat, Matrix *b, int j ) {
     if( row == j )
         return -2;
     return row;
-}
 
 
 int eliminate(Matrix *mat, Matrix *b){
