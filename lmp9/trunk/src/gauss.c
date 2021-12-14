@@ -6,19 +6,14 @@
  */
 
 int diag_elem_choice( Matrix *mat, Matrix *b, int j ) {
-    int max = mat->data[j][j];
-    int row = j;
-    for( int i = j+1; i < mat->r; i++ ) {
-        if( fabs(max) < fabs(mat->data[i][j]) ) {
-            row = i;
-            max = mat->data[i][j];
-        }
+    if (mat->data[j][j] != 0) return -2;
+
+    for (int i = j+1; i < mat->r; i++) {
+        if (mat->data[i][j] != 0)   
+            return i;
     }
-    if( mat->data[row][j] == 0 )
-        return -1;
-    if( row == j )
-        return -2;
-    return row;
+    return -1;
+
 }
 
 
