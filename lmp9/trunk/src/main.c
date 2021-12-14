@@ -13,6 +13,14 @@ int main(int argc, char ** argv) {
 
 	if (A == NULL) return -1;
 	if (b == NULL) return -2;
+    if (A->r != A->c) {
+        printf("Macierz nie jest kwadratowa\n");
+        return -3;
+    }
+    if (A->r != b->r) {
+        printf("Nieprawidlowy format macierzy!\n");
+        return 4;
+    }
 	printToScreen(A);
 	printToScreen(b);
 
