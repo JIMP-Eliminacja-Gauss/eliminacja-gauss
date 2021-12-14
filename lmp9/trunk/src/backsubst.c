@@ -17,7 +17,7 @@ int  backsubst(Matrix *x, Matrix *mat, Matrix *b) {
 				}
 
 				return 0;*/
-    if (x->r != mat->c)
+    if (mat->r != mat->c)
         return 2;
 
     int i, j;
@@ -26,7 +26,7 @@ int  backsubst(Matrix *x, Matrix *mat, Matrix *b) {
         x->data[i][0] = b->data[i][0];
         /* przypisanie wartosci z macierzy b */
 
-        for(j = i+1; j < mat->c; j++)
+        for(j = i+1; j < mat->c && j < mat->r; j++)
             x->data[i][0] = x->data[i][0] - mat->data[i][j] * x->data[j][0];
 
         if (mat->data[i][i] == 0)
