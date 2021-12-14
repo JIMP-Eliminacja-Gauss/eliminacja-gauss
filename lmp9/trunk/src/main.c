@@ -20,6 +20,17 @@ int main(int argc, char ** argv) {
 	x = createMatrix(b->r, 1);
 	if (x != NULL) {
 		res = backsubst(x,A,b);
+        if (res == 1) {
+            fprintf(stderr, "Dzielenie przez zero!\n");
+            freeMatrix(x);
+            return -1;
+        }
+        else if (res == 2) {
+            fprintf(stderr, "Nieprawidlowy rozmiar macierzy!\n"
+                            "Proszę wprowadzic macierz kwadratowa\n");
+            freeMatrix(x);
+            return -2;
+        }
 
 		printToScreen(x);
 	  freeMatrix(x);
