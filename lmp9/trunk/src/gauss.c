@@ -6,14 +6,19 @@
  */
 
 int diag_elem_choice( Matrix *mat, Matrix *b, int j ) {
-    if (mat->data[j][j] != 0) return -2;
-
-    for (int i = j+1; i < mat->r; i++) {
-        if (mat->data[i][j] != 0)   
-            return i;
+    int max = mat->data[j][j];
+    int row = j;
+    for( int i = j+1; i < mat->r; i++ ) {
+        if( fabs(max) < fabs(mat->data[i][j]) ) {
+            row = i;
+            max = mat->data[i][j];
+        }
     }
-    return -1;
-
+    if( mat->data[row][j] == 0 )
+        return -1;
+    if( row == j )
+        return -2;
+    return row;
 }
 
 
@@ -49,3 +54,4 @@ int eliminate(Matrix *mat, Matrix *b){
     }
     return 0;
 }
+
