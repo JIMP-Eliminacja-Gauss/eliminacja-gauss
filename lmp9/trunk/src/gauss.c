@@ -1,11 +1,10 @@
 #include "gauss.h"
-#include <math.h>
 /**
  * Zwraca 0 - elimnacja zakonczona sukcesem
  * Zwraca 1 - macierz osobliwa - dzielenie przez 0
  */
 
-int diag_elem_choice( Matrix *mat, Matrix *b, int j ) {
+int diag_elem_choice_second( Matrix *mat, Matrix *b, int j ) {
     if (mat->data[j][j] != 0) return -2;
 
     for (int i = j+1; i < mat->r; i++) {
