@@ -13,6 +13,14 @@ int main(int argc, char ** argv) {
 
 	if (A == NULL) return -1;
 	if (b == NULL) return -2;
+	if( A->r != b->r ) { 
+		printf("Nierowna ilosc wierszy macierzy rozwiazan B i macierzy A\n");
+		return 2;
+	}
+	if( A->r != A->c ) {
+		printf("macierz nie jest kwadratowa\n");
+		return 3;
+	}
 	printToScreen(A);
 	printToScreen(b);
 
