@@ -1,2 +1,3 @@
 *.out
-dane
+lmp9/trunk/bin/*
+lmp9/trunk/dane/*
